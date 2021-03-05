@@ -4,19 +4,21 @@ public class Array2d {
 
     static int hourglassSum(int[][] arr) {
 
-        int count = 0;
+        Integer count = null;
         for (int k = 0; k < arr[1].length-2; k++) {
             for (int i = 0; i < arr.length-2; i++) {
+                Integer countHourGlass = 0;
 
                 for (int j = 0; j < 3; j++) {
                     int linha = i + j;
-                    if(linha%2==0){
-                        count += arr[linha][k] + arr[linha][1+k] + arr[linha][2+k];
+                    if(j%2==0){
+                        countHourGlass += arr[linha][k] + arr[linha][1+k] + arr[linha][2+k];
                     }else {
-                        count += arr[linha][1+k];
+                        countHourGlass += arr[linha][1+k];
                     }
                 }
 
+                count = (count == null || countHourGlass > count) ? countHourGlass : count;
             }
         }
 
